@@ -1,0 +1,31 @@
+<h2>お問い合わせ内容確認</h2>
+
+<div>
+  <%= @contact.name %>
+</div>
+<div>
+  <%= @contact.email %>
+</div>
+<div>
+  <%= @contact.radio %>
+</div>  
+<div>
+  <%= @contact.content %>
+</div>
+
+
+
+<%= form_for @contact, url: done_path do |f| %>
+  <%= f.hidden_field :name %>
+  <%= f.hidden_field :email %>
+  <%= f.hidden_field :radio %>
+  <%= f.hidden_field :content %>
+  <div><%= f.submit '送信' %></div>
+<% end %>
+<%= form_for @contact, url: contacts_back_path do |f| %>
+  <%= f.hidden_field :name %>
+  <%= f.hidden_field :email %>
+  <%= f.hidden_field :radio %>
+  <%= f.hidden_field :content %>
+  <div><%= f.submit '入力画面に戻る' %></div>
+<% end %>

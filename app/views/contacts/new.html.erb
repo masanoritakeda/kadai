@@ -1,0 +1,33 @@
+
+<h2>お問い合わせ</h2>
+<%= form_with(model: @contact, url: {action: 'confirm'}, local: true) do |f| %>
+  
+  <div class="form-group">
+    <%= f.label :name, 'お名前' %>
+    <%= f.text_field :name  %>
+  </div>
+  <div class="form-group">
+    <%= f.label :email, 'メールアドレス' %>
+    <%= f.text_field :email  %>
+  </div>
+  <div class="form-group">
+    <%= f.radio_button :radio, :"Achieve" %>
+    <%= f.label :radio, "Achieve", value: :"Achieve" %>
+    <%= f.radio_button :radio, :"テキスト" %>
+    <%= f.label :radio, "テキスト", value: :"テキスト" %>
+    <%= f.radio_button :radio, :"説明会" %>
+    <%= f.label :radio, "説明会", value: :"説明会" %>
+    <%= f.radio_button :radio, :"その他" %>
+    <%= f.label :radio, "その他", value: :"その他" %>
+  </div>
+  
+
+  <div class="form-group">
+    <%= f.label :content, 'メッセージ' %>
+    <%= f.text_area :content%>
+  </div>
+
+  <div>
+    <%= f.submit '内容確認' %>
+  </div>
+<% end %>
