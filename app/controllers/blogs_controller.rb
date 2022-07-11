@@ -1,9 +1,11 @@
 class BlogsController < ApplicationController
   before_action :set_blog, only: %i[ show edit update destroy  ]
-
+  before_action :authenticate_user!, only: [:new, :create]
+  
   # GET /blogs or /blogs.json
   def index
     @blogs = Blog.all
+    
   end
 
   # GET /blogs/1 or /blogs/1.json
@@ -14,6 +16,7 @@ class BlogsController < ApplicationController
   # GET /blogs/new
   def new
     @blog = Blog.new
+
   end
 
   # GET /blogs/1/edit
@@ -24,9 +27,9 @@ class BlogsController < ApplicationController
   
   def create
     @blog = Blog.new(blog_params)
-    if @blog.save # DBからレコードを取得する記述
-      NoticeMailer.sendmail_blog(@blog).deliver #追記
-      redirect_to action: :index # どのビューを呼び出すかの記述
+    @blog.user_id = current_user.id
+    if @blog.save 
+      redirect_to action: :index 
     else
       render :new # どのビューを呼び出すかの記述
     end
