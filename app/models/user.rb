@@ -8,7 +8,7 @@ class User < ApplicationRecord
   has_many :blogs, dependent: :destroy
   has_many :comments
   has_one_attached :image
-  
+  paginates_per 1
   scope :index_all, -> {
   select(:id, :name, :email, :created_at)
     .order(created_at: :asc)
