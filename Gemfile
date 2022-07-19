@@ -76,3 +76,14 @@ gem 'dotenv-rails'
 gem 'rails_12factor', group: :production
 
 gem 'devise'
+
+gem 'bootstrap'
+gem 'jquery-rails'
+
+gem "kaminari"
+
+group :development do
+  #省略
+  gem "bullet"
+  #省略
+end

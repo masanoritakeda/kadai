@@ -9,6 +9,24 @@
 </p>
 <%= button_to '削除', @blog, method: :delete %>
 
+<div>
+  <%= form_with model: [@blog, @comment] do |f| %>
+    <%= f.text_area :comment, placeholder: "コメントする" %>
+    <%= f.submit "SEND" %>
+  <% end %>
+</div>
+<div>
+  <h3>コメント一覧</h3>
+  <% @comments.each do |comment| %>
+    <p>名前：<%= comment.user.name %>
+    <p>コメント：<%= comment.comment %></p>
+    <% if comment.user == current_user %>
+      <%= button_to "削除", blog_comment_path(@blog, comment), method: :delete %>
+      <%= link_to "編集", edit_blog_comment_path(@blog, comment) %>
+    <% end %>
+    
+  <% end %>
+</div>
 
 <%= link_to 'Edit', edit_blog_path(@blog) %>
 <%= link_to 'Back', blogs_path %>

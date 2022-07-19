@@ -1,6 +1,3 @@
-<p style="color: green"><%= notice %></p>
-
-<h1>Blogs</h1>
 <% if user_signed_in? %>
   <div class="user_nav grid-6">
     <%= current_user.email %>
@@ -14,16 +11,22 @@
     <%= link_to "新規登録", new_user_registration_path, class: "post" %>
   </div>
 <% end %>
-<div id="blogs">
-  <% @blogs.each do |blog| %>
-    <%= render blog %>
-    
-    <p>
-      <%= link_to "Show this blog", blog %>
-    </p>
-    
-  <% end %>
+<div id="new-blog-link">
+  <%= link_to '新規ブログを作成する', new_blog_path %>
 </div>
 
-
+<% @blogs.each do |blog| %>
+ 
+  <div class="blog-panel">
+    <h2><%= blog.title %></h2>
+    <p>名前<%= blog.user.name %></p>
+    <p><%= blog.content %></p>
+    <p><%= blog.created_at %></p>
+    <div class="blog-links">
+      <%= link_to 'Show', blog %>
+      <%= link_to 'Edit', edit_blog_path(blog) %> |
+      <%= link_to 'Destroy', blog, method: :delete, data: { confirm: 'Are you sure?' } %>
+    </div>
+  </div>
+<% end %>
 
