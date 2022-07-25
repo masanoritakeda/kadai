@@ -1,0 +1,7 @@
+
+<h2>いいね一覧</h2>
+<% @user_favorites.each do |favorite| %>
+  <div>
+    投稿名<%= favorite.blog.title %>
+  </div>
+<% end %>

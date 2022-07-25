@@ -11,7 +11,9 @@
   </head>
 
   <body>
-  
+  <nav>
+    <a href="<%= likes_user_path(current_user.id) %>">一覧</a>
+  </nav>
     <%= yield %>
   </body>
 </html>

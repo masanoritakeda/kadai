@@ -1,21 +1,21 @@
 <h2>お問い合わせ内容確認</h2>
 
 <div>
-  <%= @contact.name %>
+  名前：<%= @contact.name %>
 </div>
 <div>
-  <%= @contact.email %>
+  メールアドレス：<%= @contact.email %>
 </div>
 <div>
-  <%= @contact.radio %>
+  カテゴリー：<%= @contact.radio %>
 </div>  
 <div>
-  <%= @contact.content %>
+  内容：<%= @contact.content %>
 </div>
 
 
 
-<%= form_for @contact, url: done_path do |f| %>
+<%= form_for @contact, url: contacts_done_path do |f| %>
   <%= f.hidden_field :name %>
   <%= f.hidden_field :email %>
   <%= f.hidden_field :radio %>

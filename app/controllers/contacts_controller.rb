@@ -15,23 +15,18 @@ class ContactsController < ApplicationController
     @contact = Contact.new
   end
 
-  # GET /contacts/1/edit
-  def edit
-  end
-
   # POST /contacts or /contacts.json
   def create
-    
     @contact = Contact.new(contact_params)
     if @contact.save
-      ContactMailer.contact_mail(@contact).deliver
-      redirect_to done_path
+      ContactMailer.send_mail(@contact).deliver_now
+      redirect_to contacts_done_path
     else
       render :new
     end
+
   end
 
-  
   def destroy
     @contact.destroy
 

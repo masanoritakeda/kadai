@@ -12,7 +12,7 @@ class BlogsController < ApplicationController
     @blog = Blog.find(params[:id])
     @comment = Comment.new 
     @comments = @blog.comments.page(params[:page]).per(7)
-    
+    @favorite = current_user.favorites.find_by(blog_id: @blog.id)
   end
 
   # GET /blogs/new

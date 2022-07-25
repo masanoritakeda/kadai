@@ -28,5 +28,14 @@
   <% end %>
 </div>
 
+<div>
+<% unless @blog.user == current_user %>
+  <% if @favorite.present? %>
+    <%= button_to 'お気に入り解除する', blog_unfavorites_path(@blog.id), method: :delete, class: 'btn btn-danger' %>
+  <% else %>
+    <%= link_to 'お気に入りする', blog_favorites_path(@blog.id),method: :post, class: 'btn btn-default' %>
+  <% end %>
+<% end %>
+</div>
 <%= link_to 'Edit', edit_blog_path(@blog) %>
 <%= link_to 'Back', blogs_path %>
